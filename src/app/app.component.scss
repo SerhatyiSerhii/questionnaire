@@ -1,0 +1,71 @@
+html, body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 5px;
+
+        div {
+            margin-bottom: 10px;
+            width: 200px;
+
+            label {
+                width: 100%;
+                box-sizing: border-box;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            select {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.hobbies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 355px;
+
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        input:first-child {
+            margin-right: 5px;
+        }
+    }
+
+    button {
+        width: 200px;
+        margin-top: 10px;
+    }
+}
+
+.alert {
+    text-align: center;
+    color: brown;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+.wrong {
+    color: red
+}

@@ -1,0 +1,50 @@
+<div class="container">
+  <form [formGroup]="userForm">
+    <div>
+      <label>
+        <input type="text" placeholder="Name" formControlName="name">
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="text" placeholder="Surname" formControlName="surname">
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="text" bsDatepicker placeholder="Date of birth" formControlName="birthday">
+      </label>
+    </div>
+    <div>
+      <select (change)="onSelectFrame($event)" formControlName="frameWork">
+        <option selected [disabled]="disabledFrame">Select a framework</option>
+        <option *ngFor="let framework of frameworks">{{framework}}</option>
+      </select>
+    </div>
+    <div>
+      <fieldset [disabled]="!selectedFramework">
+        <select formControlName="version" (change)="onSelectVersion()">
+          <option selected [disabled]="disabledVersion">Select a version</option>
+          <option *ngFor="let version of selectedFramework"> {{version}} </option>
+        </select>
+      </fieldset>
+    </div>
+    <div>
+      <label>
+        <input type="email" formControlName="email" (input)="onInput($event)" placeholder="Email address" [class.wrong]="userForm.controls.email.invalid">
+      </label>
+      <div *ngIf="matchEmail" class="alert">
+        Some user has such email already
+      </div>
+    </div>
+    <div class="hobbies" formArrayName="hobbies">
+      <label formGroupName={{i}} *ngFor="let hobby of hobbies.controls; let i = index">
+        <input type="text" placeholder="Hobby" formControlName="hobby">
+        <input type="text" placeholder="Duration" formControlName="duration">
+      </label>
+      <button (click)="addHobby()">Add hobby</button>
+    </div>
+
+    <button type="submit" (click)="onSubmit()" [disabled]="userForm.invalid">Submit</button>
+  </form>
+</div>
